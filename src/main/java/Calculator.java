@@ -1,13 +1,16 @@
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ListIterator;
 import java.util.stream.Collectors;
 
 public class Calculator {
 
-double addition (double ... addends) {
+double addition (double... addends) {
 	return Arrays.stream (addends).sum ();
 }
 
-double subtraction (double ... numbers) {
+double subtraction (double... numbers) {
+	
 	double difference = 0;
 	
 	List<Double> list = Arrays.stream (numbers).boxed ().collect (Collectors.toList ());
@@ -17,7 +20,7 @@ double subtraction (double ... numbers) {
 	ListIterator listIterator = list.listIterator ();
 	
 	while (listIterator.hasNext ()) {
-	double next = (double) listIterator.next ();
+		double next = (double) listIterator.next ();
 		listIterator.remove ();
 		difference = first - next;
 	}
@@ -25,16 +28,16 @@ double subtraction (double ... numbers) {
 	return difference;
 }
 
-double division (double ... numbers) {
+double division (double... numbers) {
 	List<Double> list = Arrays.stream (numbers).boxed ().collect (Collectors.toList ());
-	return list.stream()
-			.reduce(1.0, (a, b) -> a / b);
+	return list.stream ()
+			.reduce (1.0, (a, b) -> a / b);
 }
 
-double multiplication (double ... factors) {
+double multiplication (double... factors) {
 	List<Double> list = Arrays.stream (factors).boxed ().collect (Collectors.toList ());
-	return list.stream()
-			.reduce(1.0, (a, b) -> a * b);
+	return list.stream ()
+			.reduce (1.0, (a, b) -> a * b);
 }
 	
 }
