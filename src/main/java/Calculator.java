@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Calculator {
@@ -10,14 +8,27 @@ double addition (double ... addends) {
 }
 
 double subtraction (double ... numbers) {
+	double difference = 0;
+	
 	List<Double> list = Arrays.stream (numbers).boxed ().collect (Collectors.toList ());
-	return list.stream()
-			.reduce(0.0, (a, b) -> a - b);
+	
+	double first = list.remove (0);
+	
+	ListIterator listIterator = list.listIterator ();
+	
+	while (listIterator.hasNext ()) {
+	double next = (double) listIterator.next ();
+		listIterator.remove ();
+		difference = first - next;
+	}
+	
+	return difference;
 }
 
-double division () {
-	return 0;
-	
+double division (double ... numbers) {
+	List<Double> list = Arrays.stream (numbers).boxed ().collect (Collectors.toList ());
+	return list.stream()
+			.reduce(1.0, (a, b) -> a / b);
 }
 
 double multiplication (double ... factors) {

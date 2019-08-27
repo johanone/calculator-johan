@@ -8,6 +8,7 @@ public static void main (String[] args) {
 	System.out.println (	calculator.addition (2.0, 2.5));
 	System.out.println (	calculator.subtraction (2.0, 2.5));
 	System.out.println (	calculator.multiplication (2.0, 2.5));
+	System.out.println (	calculator.division (2.0, 2.5));
 	
 }
 }
